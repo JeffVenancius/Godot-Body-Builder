@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://GodotProject.gd" type="Script" id=1]
+[ext_resource path="res://FolderMediumThumb.svg" type="Texture" id=2]
+
+[sub_resource type="StyleBoxLine" id=8]
+content_margin_top = 8.0
+color = Color( 0.27451, 0.0509804, 0.0509804, 1 )
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id=5]
+content_margin_top = 8.0
+color = Color( 0.27451, 0.0509804, 0.0509804, 1 )
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 32, 32 )
+modulate_color = Color( 0.443137, 0.0823529, 0.0823529, 1 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 32, 32 )
+modulate_color = Color( 0.313726, 0.0588235, 0.0588235, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.443137, 0.0823529, 0.0823529, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.27451, 0.0509804, 0.0509804, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -37.5
+margin_right = 256.0
+margin_bottom = 37.5
+custom_constants/separation = 21
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GodotProject" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 512.0
+margin_bottom = 22.0
+custom_constants/separation = 12
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/GodotProject"]
+margin_right = 476.0
+margin_bottom = 22.5
+size_flags_horizontal = 3
+custom_styles/focus = SubResource( 8 )
+custom_styles/normal = SubResource( 5 )
+placeholder_text = "Drag and drop your Godot project here."
+
+[node name="Button" type="Button" parent="VBoxContainer/GodotProject"]
+margin_left = 488.0
+margin_right = 512.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 24, 0 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_left = 240.0
+margin_top = 43.0
+margin_right = 272.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 32, 32 )
+size_flags_horizontal = 4
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 3 )
+text = "Go"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.0
+margin_top = 20.0
+margin_right = -1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+window_title = "Open a Godot Project"
+mode = 2
+access = 2
+current_dir = "/home/jeffven/Documentos/codes/Godot Body Builder"
+current_path = "/home/jeffven/Documentos/codes/Godot Body Builder/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="VBoxContainer/GodotProject/Button" to="VBoxContainer/GodotProject" method="_on_dir_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer/GodotProject" method="_on_Button_pressed"]
+[connection signal="dir_selected" from="FileDialog" to="VBoxContainer/GodotProject" method="_on_FileDialog_dir_selected"]
