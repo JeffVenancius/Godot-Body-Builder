@@ -626,6 +626,7 @@ func _on_Button_pressed() -> void:
 
 func create_output() -> void:
 	var Output := create_file("res://output.txt", File.WRITE)
+<<<<<<< HEAD
 	Output.store_line("Used modules:")
 	for i in modules: Output.store_line(i)
 	Output.store_line("")
@@ -634,6 +635,15 @@ func create_output() -> void:
 		if not i in used_res:
 			Output.store_line(i)
 	OS.shell_open(ProjectSettings.globalize_path("res://output.txt"))
+=======
+	Output.store_line("Modules:")
+	for i in modules: Output.store_line(i)
+	Output.store_line("")
+	Output.store_line("Nodes:")
+	Output.store_line("")
+	for i in used_res: Output.store_line(i)
+	print("look for Output.txt on this project folder!")
+>>>>>>> fa14117592268ecc55a8701c9c15f225f3495ae3
 
 
 func scan_res(platform: String) -> void:
