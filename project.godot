@@ -11,6 +11,7 @@ config_version=4
 [application]
 
 config/name="Godot Body Builder"
+config/description="Scans a Godot project, lists the nodes used and (that's for later) helps you to create a shorter build. "
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
@@ -18,6 +19,8 @@ config/icon="res://icon.png"
 
 window/size/width=560
 window/size/height=296
+window/size/test_width=1120
+window/size/test_height=592
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

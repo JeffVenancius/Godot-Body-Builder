@@ -622,10 +622,22 @@ var inherit_from := {
 func _on_Button_pressed() -> void:
 	scan_project($LineEdit.get_text())
 	for i in ["","mobile", "others"]: scan_res(i) # empty string so the function will give a completed result.
+	create_output()
+
+func create_output() -> void:
+	var Output := create_file("res://output.txt", File.WRITE)
+	Output.store_line("Used modules:")
+	for i in modules: Output.store_line(i)
+	Output.store_line("")
+	Output.store_line("Unused nodes:")
+	for i in heirdomOwners:
+		if not i in used_res:
+			Output.store_line(i)
+	OS.shell_open(ProjectSettings.globalize_path("res://output.txt"))
+
 
 func scan_res(platform: String) -> void:
 	var param:  String
-	print(used_res)
 	for used in used_res:
 		if used.begins_with("ARVR"):
 			match  platform:
